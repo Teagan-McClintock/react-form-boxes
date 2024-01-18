@@ -24,10 +24,11 @@ function NewBoxForm({ addBox }) {
   function handleSubmit(evt) {
     evt.preventDefault();
     addBox(formValues);
-    // setFormValues(initialState);
+    // setFormValues(initialState);    // <--- (initialState is not a thing)
     setFormValues({height: "", width: "", color: ""});
   }
 
+    // TODO: ids like "height", "width", etc are not specific enough
   return (
     <div className="NewBoxForm">
       <form onSubmit={handleSubmit}>
