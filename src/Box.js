@@ -9,14 +9,16 @@ import React from "react";
  *
  * BoxList -> Box*/
 
-function Box({ color, width, height }) {
+function Box({ id, color, width, height }) {
   const myStyle = {
     "background-color": color,
     "width": width,
     "height": height
   }
 
-  function removeBox() {
+
+  function removeBox(evt) {
+
 
   }
 
@@ -29,3 +31,6 @@ function Box({ color, width, height }) {
   )
 
 }
+
+
+export default Box;
