@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, initialState } from "react";
 import { v4 as uuid } from 'uuid';
 
 /**Renders form to add a new box.
@@ -11,7 +11,7 @@ import { v4 as uuid } from 'uuid';
  */
 
 
-function NewBoxForm({ handleSubmit }) {
+function NewBoxForm({ addBox }) {
   const [formValues, setFormValues] = useState(
     {height: "", width: "", color: ""}
   );
@@ -21,27 +21,41 @@ function NewBoxForm({ handleSubmit }) {
     setFormValues(fValues => ({...fValues, [name]: value}));
   }
 
+  function handleSubmit(evt) {
+    evt.preventDefault();
+    addBox(formValues);
+    // setFormValues(initialState);
+    setFormValues({height: "", width: "", color: ""});
+  }
+
   return (
-    <div>
+    <div className="NewBoxForm">
       <form onSubmit={handleSubmit}>
-        <label htmlFor="height">Height</label>
+        <p>
+        <label htmlFor="height">Height </label>
         <input id="height"
           name="height"
           value={formValues.height}
           onChange={handleFormChange}>
         </input>
-        <label htmlFor="width">Width</label>
+        </p><p>
+        <label htmlFor="width">Width </label>
         <input id="width"
           name="width"
           value={formValues.width}
           onChange={handleFormChange}>
         </input>
-        <label htmlFor="color">Background Color</label>
+        </p><p>
+        <label htmlFor="color">Background Color </label>
         <input id="color"
           name="color"
           value={formValues.color}
           onChange={handleFormChange}>
         </input>
+        </p>
+        <button>
+          Add a new box!
+        </button>
       </form>
     </div>
   );
